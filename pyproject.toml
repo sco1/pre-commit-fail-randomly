@@ -1,0 +1,72 @@
+[tool.poetry]
+name = "pre-commit-fail-randomly"
+version = "0.1.0"
+description = "Randomly fail a pre-commit run"
+authors = ["sco1 <sco1.git@gmail.com>"]
+
+readme = "README.md"
+homepage = "https://github.com/sco1/"
+repository = "https://github.com/sco1/pre-commit-fail-randomly"
+classifiers = [
+    "Development Status :: 6 - Mature",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Quality Assurance",
+    "Typing :: Typed",
+]
+packages = [{include = "pre_commit_fail_randomly"},]
+
+[tool.poetry.scripts]
+pcrandfail = "pre_commit_fail_randomly.fail_randomly:main"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+[tool.poetry.dev-dependencies]
+black = "^24.1"
+bump2version = "^1.0"
+flake8 = "^7.0"
+flake8-annotations = "^3.0"
+isort = "^5.12"
+mypy = "^1.0"
+pre-commit = "^3.0"
+pytest = "^8.0"
+pytest-check = "^2.1"
+pytest-cov = "^4.0"
+pytest-randomly = "^3.12"
+ruff = "0.2"
+tox = "^4.4"
+
+[tool.black]
+line-length = 100
+
+[tool.isort]
+case_sensitive = true
+known_first_party = "pre-commit-fail-randomly,tests"
+no_lines_before = "LOCALFOLDER"
+order_by_type = false
+profile = "black"
+line_length = 100
+
+[tool.mypy]
+disallow_incomplete_defs = true
+disallow_untyped_calls = true
+disallow_untyped_decorators = true
+disallow_untyped_defs = true
+ignore_missing_imports = true
+no_implicit_optional = true
+show_error_codes = true
+warn_redundant_casts = true
+warn_return_any = true
+warn_unused_configs = true
+warn_unused_ignores = true
+
+[build-system]
+requires = ["poetry-core>=1.2"]
+build-backend = "poetry.core.masonry.api"

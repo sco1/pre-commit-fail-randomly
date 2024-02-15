@@ -1,0 +1,5 @@
+- id: fail-randomly
+  name: Fail Randomly
+  entry: pcrandfail
+  language: python
+  types: [python]
