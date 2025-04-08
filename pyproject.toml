@@ -1,16 +1,17 @@
-[tool.poetry]
+[project]
 name = "pre-commit-fail-randomly"
 version = "0.1.0"
 description = "Randomly fail a pre-commit run"
-authors = ["sco1 <sco1.git@gmail.com>"]
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [
+    {name = "sco1", email = "sco1.git@gmail.com"}
+]
 
 readme = "README.md"
-homepage = "https://github.com/sco1/"
-repository = "https://github.com/sco1/pre-commit-fail-randomly"
 classifiers = [
     "Development Status :: 6 - Mature",
     "Intended Audience :: Developers",
-    "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3 :: Only",
     "Programming Language :: Python :: 3.10",
@@ -20,27 +21,37 @@ classifiers = [
     "Topic :: Software Development :: Quality Assurance",
     "Typing :: Typed",
 ]
-packages = [{include = "pre_commit_fail_randomly"},]
 
-[tool.poetry.scripts]
+requires-python = ">=3.11"
+dependencies = [
+]
+
+[project.urls]
+Homepage = "https://github.com/sco1/"
+Documentation = "https://github.com/sco1/pre-commit-fail-randomly/blob/main/README.md"
+Repository = "https://github.com/sco1/pre-commit-fail-randomly"
+Issues = "https://github.com/sco1/pre-commit-fail-randomly/issues"
+Changelog = "https://github.com/sco1/pre-commit-fail-randomly/blob/main/CHANGELOG.md"
+
+[project.scripts]
 pcrandfail = "pre_commit_fail_randomly.fail_randomly:main"
 
-[tool.poetry.dependencies]
-python = "^3.10"
-
-[tool.poetry.dev-dependencies]
-black = "^24.1"
-bump2version = "^1.0"
-flake8 = "^7.0"
-flake8-annotations = "^3.0"
-isort = "^5.12"
-mypy = "^1.0"
-pre-commit = "^3.0"
-pytest = "^8.0"
-pytest-cov = "^5.0"
-pytest-randomly = "^3.12"
-ruff = "^0.6"
-tox = "^4.4"
+[tool.uv]
+dev-dependencies = [
+    "black~=25.0",
+    "flake8~=7.1",
+    "flake8-annotations~=3.1",
+    "isort~=6.0",
+    "mypy~=1.11",
+    "pre-commit~=4.0",
+    "pytest~=8.3",
+    "pytest-cov~=6.0",
+    "pytest-randomly~=3.15",
+    "ruff~=0.6",
+    "sco1-bumper~=1.0",
+    "tox~=4.18",
+    "tox-uv~=1.11",
+]
 
 [tool.black]
 line-length = 100
@@ -67,5 +78,5 @@ warn_unused_configs = true
 warn_unused_ignores = true
 
 [build-system]
-requires = ["poetry-core>=1.2"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
